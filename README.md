@@ -3,7 +3,7 @@
  **Research code repository** for a resource-conscious hybrid quantum–classical machine-learning framework for **early sepsis prediction from ICU time-series data**, with an emphasis on a compact model and potential edge-deployment scenarios.
 
 > **Publication:** Published at CINS 2026, organized at BITS Pilani, Dubai.  
-  **Paper:** [WILL BE UPDATED] 
+> **Paper:** [WILL BE UPDATED] 
 > **Project origin:** Developed as part of the *Digital Healthcare and AI* subject.
 
 ---
@@ -26,23 +26,17 @@ EDA was conducted to understand the ICU dataset, the length of patient records, 
 
 The distribution of patient record lengths (measured in available hourly observations) helps characterize how much temporal information is available per patient. Stay length is important when creating fixed-size temporal windows and when considering how many training samples each patient can contribute.
 
-**Patient stay-length distribution**
-
 ![Patient stay-length distribution](images/patient_stay_lengths.png)
 
 ### 2. Percentage of Missing Values per Feature
 
 ICU datasets often contain substantial missingness because measurements are not collected uniformly or continuously. Missing-value percentages were examined for individual features to understand data sparsity and inform preprocessing.
 
-**Missing values per feature**
-
 ![Missing values per feature](images/missing_values_per_feature.png)
 
 ### 3. Feature Correlation Heatmap
 
 The correlation heatmap was used to inspect linear relationships between numerical variables, identify correlated measurements, and better understand the relationships within the physiological and laboratory feature space.
-
-**Feature correlation heatmap**
 
 ![Feature correlation heatmap](images/feature_correlation_heatmap.png)
 
@@ -88,7 +82,7 @@ The model uses the original vital signs and laboratory features along with deriv
 
 The change features capture how measurements evolve over time rather than relying only on their current values.
 
-> Note: Pulse Pressure (SBP − DBP) is computed during preprocessing in the notebook, but it is not included in the final `ALL_FEATURES` list used by the model.
+> Note: Pulse Pressure (SBP − DBP) is computed during preprocessing in the notebook, but it is not included in the final `ALL_FEATURES` list used by the model as some experiments showed they were'nt contributing much in predicting sepsis labels.
 
 ### 4. Temporal Windowing
 
@@ -112,10 +106,6 @@ During balanced training, the pipeline also applies a signal-change filter and l
 ## Model Architecture
 
 The proposed model is a compact **hybrid quantum–classical architecture**.
-
-### Architecture Diagram
-
-**Hybrid Quantum–Classical model architecture**
 
 ![Hybrid Quantum-Classical architecture](images/model_architecture.png)
 
@@ -210,7 +200,7 @@ The training objective combines weighted binary cross-entropy and focal loss:
 The combined loss is:
 
 \[
-\mathcal{L} = \alpha \mathcal{L}_{BCE} + (1-\alpha)\mathcal{L}_{Focal}
+\mathcal{L} = \alpha \mathcal{L}_{\mathrm{BCE}} + (1-\alpha)\mathcal{L}_{\mathrm{Focal}}
 \]
 
 The implementation uses `POS_WEIGHT = 2.0` and `ALPHA = 0.2`.
