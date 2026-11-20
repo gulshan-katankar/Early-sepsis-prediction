@@ -3,7 +3,7 @@
  **Research code repository** for a resource-conscious hybrid quantum–classical machine-learning framework for **early sepsis prediction from ICU time-series data**, with an emphasis on a compact model and potential edge-deployment scenarios.
 
 > **Publication:** Published at CINS 2026, organized at BITS Pilani, Dubai.  
-> **Paper:** [WILL BE UPDATED] 
+> **Paper:** [WILL BE UPDATED].
 > **Project origin:** Developed as part of the *Digital Healthcare and AI* subject.
 
 ---
@@ -199,9 +199,9 @@ The training objective combines weighted binary cross-entropy and focal loss:
 
 The combined loss is:
 
-\[
-\mathcal{L} = \alpha \mathcal{L}_{\mathrm{BCE}} + (1-\alpha)\mathcal{L}_{\mathrm{Focal}}
-\]
+$$
+\mathcal{L} = \alpha \mathcal{L}_{\text{BCE}} + (1-\alpha)\mathcal{L}_{\text{Focal}}
+$$
 
 The implementation uses `POS_WEIGHT = 2.0` and `ALPHA = 0.2`.
 
